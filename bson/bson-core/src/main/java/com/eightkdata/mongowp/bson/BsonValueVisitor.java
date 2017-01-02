@@ -41,6 +41,8 @@ public interface BsonValueVisitor<R, A> {
   R visit(BsonInt32 value, A arg);
 
   R visit(BsonInt64 value, A arg);
+  
+  R visit(BsonDecimal128 value, A arg);
 
   R visit(BsonBoolean value, A arg);
 

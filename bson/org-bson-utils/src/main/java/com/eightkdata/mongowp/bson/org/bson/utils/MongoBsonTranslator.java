@@ -32,6 +32,7 @@ import com.eightkdata.mongowp.bson.impl.FalseBsonBoolean;
 import com.eightkdata.mongowp.bson.impl.ListBsonArray;
 import com.eightkdata.mongowp.bson.impl.LongBsonDateTime;
 import com.eightkdata.mongowp.bson.impl.MapBasedBsonDocument;
+import com.eightkdata.mongowp.bson.impl.PrimitiveBsonDecimal128;
 import com.eightkdata.mongowp.bson.impl.PrimitiveBsonDouble;
 import com.eightkdata.mongowp.bson.impl.PrimitiveBsonInt32;
 import com.eightkdata.mongowp.bson.impl.PrimitiveBsonInt64;
@@ -238,6 +239,8 @@ public class MongoBsonTranslator {
         return PrimitiveBsonInt32.newInstance(value.asInt32().getValue());
       case INT64:
         return PrimitiveBsonInt64.newInstance(value.asInt64().getValue());
+      case DECIMAL128:
+          return PrimitiveBsonDecimal128.newInstance(value.asDecimal128().getValue().bigDecimalValue().floatValue());
       case JAVASCRIPT: {
         return new DefaultBsonJavaScript(value.asJavaScript().getCode());
       }

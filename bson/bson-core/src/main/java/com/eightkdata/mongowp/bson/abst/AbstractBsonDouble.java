@@ -52,6 +52,11 @@ public abstract class AbstractBsonDouble extends AbstractBsonNumber<Double> impl
   }
 
   @Override
+  public float floatValue() {
+      return (float) doubleValue();
+  }
+  
+  @Override
   public BsonDouble asDouble() {
     return this;
   }

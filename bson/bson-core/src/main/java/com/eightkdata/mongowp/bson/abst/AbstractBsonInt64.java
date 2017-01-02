@@ -44,6 +44,11 @@ public abstract class AbstractBsonInt64 extends AbstractBsonNumber<Long> impleme
   public double doubleValue() {
     return longValue();
   }
+  
+  @Override
+  public float floatValue() {
+    return longValue();
+  }
 
   @Override
   public BsonInt64 asInt64() {

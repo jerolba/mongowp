@@ -48,8 +48,8 @@ public enum BsonType {
   INT32(BsonInt32.class,
       16),
   TIMESTAMP(BsonTimestamp.class, 17),
-  INT64(BsonInt64.class,
-      18),
+  INT64(BsonInt64.class, 18),
+  DECIMAL128(BsonDecimal128.class, 19),
   MIN(BsonMin.class, 255),
   MAX(BsonMax.class, 127);
 

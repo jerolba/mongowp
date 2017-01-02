@@ -21,26 +21,23 @@ package com.eightkdata.mongowp.bson;
 /**
  *
  */
-public interface BsonNumber<V extends Number> extends BsonValue<V> {
+public interface BsonDecimal128 extends BsonNumber<Float> {
 
+  /**
+   * Two BsonDecimal128 values are equal if the float values their contain are equal.
+   *
+   * @param obj
+   * @return
+   */
   @Override
-  BsonDouble asDouble();
+  public boolean equals(Object obj);
 
+  /**
+   * The hashCode of a BsonDecimal128 is the hashCode of the value it contains.
+   *
+   * @return
+   * @see Float#hashCode()
+   */
   @Override
-  BsonInt32 asInt32();
-
-  @Override
-  BsonInt64 asInt64();
-
-  @Override
-  BsonDecimal128 asDecimal128();
-
-  int intValue();
-
-  long longValue();
-
-  double doubleValue();
-  
-  float floatValue();
-
+  public int hashCode();
 }

@@ -28,6 +28,7 @@ import static com.eightkdata.mongowp.bson.BsonType.DOCUMENT;
 import static com.eightkdata.mongowp.bson.BsonType.DOUBLE;
 import static com.eightkdata.mongowp.bson.BsonType.INT32;
 import static com.eightkdata.mongowp.bson.BsonType.INT64;
+import static com.eightkdata.mongowp.bson.BsonType.DECIMAL128;
 import static com.eightkdata.mongowp.bson.BsonType.JAVA_SCRIPT;
 import static com.eightkdata.mongowp.bson.BsonType.JAVA_SCRIPT_WITH_SCOPE;
 import static com.eightkdata.mongowp.bson.BsonType.MAX;
@@ -60,6 +61,7 @@ public final class BsonTypeComparator implements Comparator<BsonType>, Serializa
       MIN,
       NULL,
       DOUBLE, //also int32 and int64
+      DECIMAL128,
       STRING, //also symbol
       DOCUMENT,
       ARRAY,

@@ -18,47 +18,56 @@
 
 package com.eightkdata.mongowp.bson.abst;
 
-import com.eightkdata.mongowp.bson.BsonInt32;
+import com.eightkdata.mongowp.bson.BsonDecimal128;
+import com.eightkdata.mongowp.bson.BsonDouble;
 import com.eightkdata.mongowp.bson.BsonType;
 import com.eightkdata.mongowp.bson.BsonValueVisitor;
+import com.google.common.primitives.Doubles;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
-public abstract class AbstractBsonInt32 extends AbstractBsonNumber<Integer> implements BsonInt32 {
+public abstract class AbstractBsonDecimal128 extends AbstractBsonNumber<Float> implements BsonDecimal128 {
 
   @Override
-  public Class<? extends Integer> getValueClass() {
-    return Integer.class;
+  public Class<? extends Float> getValueClass() {
+    return Float.class;
   }
 
   @Override
   public BsonType getType() {
-    return BsonType.INT32;
+    return BsonType.DECIMAL128;
+  }
+
+  @Override
+  public Float getValue() {
+    return floatValue();
+  }
+
+  @Override
+  public int intValue() {
+    return (int) floatValue();
   }
 
   @Override
   public long longValue() {
-    return intValue();
-  }
-
-  @Override
-  public double doubleValue() {
-    return intValue();
+    return (long) floatValue();
   }
   
   @Override
-  public float floatValue() {
-    return intValue();
+  public double doubleValue() {
+    return (double) floatValue();
   }
 
   @Override
-  public BsonInt32 asInt32() {
+  public BsonDecimal128 asDecimal128() {
     return this;
   }
 
   @Override
-  public boolean isInt32() {
+  public boolean isDecimal128() {
     return true;
   }
 
+  @SuppressFBWarnings("FE_FLOATING_POINT_EQUALITY")
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) {
@@ -67,15 +76,15 @@ public abstract class AbstractBsonInt32 extends AbstractBsonNumber<Integer> impl
     if (obj == null) {
       return false;
     }
-    if (!(obj instanceof BsonInt32)) {
+    if (!(obj instanceof BsonDouble)) {
       return false;
     }
-    return intValue() == ((BsonInt32) obj).intValue();
+    return this.doubleValue() == ((BsonDouble) obj).doubleValue();
   }
 
   @Override
   public final int hashCode() {
-    return intValue();
+    return Doubles.hashCode(doubleValue());
   }
 
   @Override

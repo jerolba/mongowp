@@ -18,11 +18,13 @@
 
 package com.eightkdata.mongowp.bson.abst;
 
+import com.eightkdata.mongowp.bson.BsonDecimal128;
 import com.eightkdata.mongowp.bson.BsonDouble;
 import com.eightkdata.mongowp.bson.BsonInt32;
 import com.eightkdata.mongowp.bson.BsonInt64;
 import com.eightkdata.mongowp.bson.BsonNumber;
 import com.eightkdata.mongowp.bson.BsonValue;
+import com.eightkdata.mongowp.bson.impl.PrimitiveBsonDecimal128;
 import com.eightkdata.mongowp.bson.impl.PrimitiveBsonDouble;
 import com.eightkdata.mongowp.bson.impl.PrimitiveBsonInt32;
 import com.eightkdata.mongowp.bson.impl.PrimitiveBsonInt64;
@@ -54,6 +56,11 @@ public abstract class AbstractBsonNumber<V extends Number> extends AbstractBsonV
   @Override
   public BsonDouble asDouble() {
     return PrimitiveBsonDouble.newInstance(doubleValue());
+  }
+  
+  @Override
+  public BsonDecimal128 asDecimal128() {
+    return PrimitiveBsonDecimal128.newInstance(floatValue());
   }
 
   @Override
